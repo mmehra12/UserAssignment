@@ -1,5 +1,9 @@
 import sys
-sys.path.append('/Users/mmehra/gitrepos/UserAssignment')
+import os
+
+current_directory = os.getcwd()
+#print("Current working directory:", current_directory)
+sys.path.append(current_directory)
 
 from flask import Flask, render_template, redirect, url_for, flash
 from forms import AdminForm, ParticipantForm
