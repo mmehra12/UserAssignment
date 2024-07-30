@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Admin Dashboard</h1>
+    </header>
+    <main>
+        <section class="form-section">
+            <h2>Generate Usernames</h2>
+            <form method="POST">
+                {{ form.hidden_tag() }}
+                <div class="form-group">
+                    {{ form.prefix.label(class="form-label") }}
+                    {{ form.prefix(class="form-input") }}
+                </div>
+                <div class="form-group">
+                    {{ form.start.label(class="form-label") }}
+                    {{ form.start(class="form-input") }}
+                </div>
+                <div class="form-group">
+                    {{ form.end.label(class="form-label") }}
+                    {{ form.end(class="form-input") }}
+                </div>
+                <div class="form-group">
+                    {{ form.submit(class="form-button") }}
+                </div>
+            </form>
+        </section>
+        
+        <section class="list-section">
+            <h2>Usernames</h2>
+            <div class="list-container">
+                <div class="list-box">
+                    <h3>Available Usernames</h3>
+                    <ul>
+                        {% for username in available_usernames %}
+                            <li>{{ username }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="list-box">
+                    <h3>Assigned Usernames</h3>
+                    <ul>
+                        {% for workshop_username, assigned_username in assigned_usernames.items() %}
+                            <li>{{ workshop_username }}: {{ assigned_username }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+    </footer>
+</body>
+</html>
